@@ -450,7 +450,7 @@ public final class ConfigFactory {
      * @return the default override configuration
      */
     public static Config defaultOverrides(ClassLoader loader) {
-        return systemProperties();
+        return systemProperties().withFallback(systemEnvironment());
     }
 
     /**
