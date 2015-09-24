@@ -41,3 +41,5 @@ parallelExecution in Test := false
 sources in (Compile, doc) := (sources in (Compile, doc)).value.filter(_.getParentFile.getName != "impl")
 
 JavaVersionCheck.javacVersionCheckSettings
+
+version := "1.2.1-taulia3"

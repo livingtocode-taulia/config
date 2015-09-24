@@ -332,7 +332,10 @@ public class ConfigImpl {
 
     private static AbstractConfigObject loadEnvVariables() {
         Properties envProps = new Properties();
-        envProps.putAll(System.getenv());
+        Map<String,String> environmentVars = System.getenv();
+        for (String key : environmentVars.keySet()) {
+            envProps.put(key.replaceAll("_", "."), environmentVars.get(key));
+        }
         return (AbstractConfigObject) Parseable.newProperties(envProps,
           ConfigParseOptions.defaults().setOriginDescription("env variables")).parse();
     }
